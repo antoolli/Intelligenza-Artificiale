@@ -1,0 +1,13 @@
+cell(X,Y,V,S):- cardDlv(X,Y,V,S,_), V=13.
+
+coppia(X1,Y1,V1,S1,P1,X2,Y2,V2,S2,P2) | nocoppia(X1,Y1,V1,S1,P1,X2,Y2,V2,S2,P2) :-cardDlv(X1,Y1,V1,S1,P1),cardDlv(X2,Y2,V2,S2,P2), V1+V2=13.  
+
+almeno(1):-coppia(X1,Y1,V1,S1,P1,X2,Y2,V2,S2,P2).
+:-not almeno(1).
+:-coppia(_,_,_,_,"d",_,_,_,_,"d").
+:-coppia(X1,Y1,V1,S1,P1,X2,Y2,V2,S2,P2), coppia(X2,Y2,V2,S2,P2,X1,Y1,V1,S1,P1).
+:-coppia(X1,Y1,V1,S1,P1,X2,Y2,V2,S2,P2), coppia(X1,Y1,V1,S1,P1,X3,Y3,V3,S3,P3),   S2!=S3 .
+:-coppia(X1,Y1,V1,S1,P1,_,_,_,_,_),coppia(_,_,_,_,_,X1,Y1,V1,S1,P1).
+:-coppia(X2,Y2,V2,S2,P2,X1,Y1,V1,S1,P1), coppia(X3,Y3,V3,S3,P3,X1,Y1,V1,S1,P1), S2!= S3.
+cell(X,Y,V,S):-coppia(X,Y,V,S,_,_,_,_,_,_).
+cell(X,Y,V,S):-coppia(_,_,_,_,_,X,Y,V,S,_).
