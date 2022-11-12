@@ -103,7 +103,7 @@ public class MainClass {
 			}
 		}
 			
-		//Aggiungiamo all'handler il programma logico comprensivo di encoding e fatti.
+		//Aggiungiamo all'handler il programma logico 
 		handler.addProgram(facts);
 		
 		
@@ -118,7 +118,7 @@ public class MainClass {
 		//L'handler invoca DLV in modo SINCRONO dando come input il programma logico e i fatti.
 		Output o =  handler.startSync();
 		
-		//Stampiamo su standard output ogni answerset ottenuto.
+		// answerset ottenuto.
 		AnswerSets answers = (AnswerSets) o;
 		int n=0;
 		for(AnswerSet a:answers.getAnswersets()){
@@ -127,7 +127,7 @@ public class MainClass {
 				for(Object obj:a.getAtoms()){
 					if (obj instanceof Cell) {
 						Cell c= (Cell) obj;
-							//c.stampa();   stampa le carte del deck e della piramide eliminate
+							c.stampa();   //stampa le carte del deck e della piramide eliminate
 							elimina(c);
 							gioca=true;
 					}
